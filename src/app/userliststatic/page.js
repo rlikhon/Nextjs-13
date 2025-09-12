@@ -1,0 +1,63 @@
+import React from "react";
+import "./../styles/UserList.css";
+import "../../../services/getUsers";
+import getUsers from "../../../services/getUsers";
+import Link from "next/link";
+
+const page = async () => {
+  const getUserList = getUsers();
+  const users = await getUserList;
+  console.log(users);
+
+  return (
+    <>
+      <h1>User List Page</h1>
+
+      <h2>User List</h2>
+      <div>Total Users: {users.length}</div>
+
+      <div className="user-list container mt-4 p-4 border rounded shadow bg-light">
+        <ul>
+          {users.map((user) => (
+            <li key={user.id} className="user-card">
+              <div className="user-avatar">
+                <img
+                  src={`https://robohash.org/${user.id}?size=50x50`}
+                  alt={user.name}
+                />
+              </div>
+
+              <div className="user-info">
+                <div className="user-name">{user.name}</div>
+                <div className="user-email">{user.email}</div>
+              </div>
+              <div className="user-meta">
+                <div>
+                  <strong>City:</strong> {user.address.city}
+                </div>
+                <div>
+                  <strong>Company:</strong> {user.company.name}
+                </div>
+                <div>
+                  <strong>Phone:</strong> {user.phone}
+                </div>
+                <div>
+                  <strong>Website:</strong> {user.website}
+                </div>
+              </div>
+              <div>
+                <Link href={`/userliststatic/${user.id}`}>
+                  <button style={{ marginTop: "10px", padding: "5px 10px", cursor: "pointer", borderRadius: "5px", border: "none", backgroundColor: "#007bff", color: "#fff" }}>
+                   Details
+                  </button>
+                </Link>
+              </div>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </>
+  );
+};
+
+export default page;

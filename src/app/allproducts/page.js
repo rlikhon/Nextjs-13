@@ -37,3 +37,10 @@ async function fetchProducts() {
   
   return data.products;
 }
+
+export function generateMetadata(params) {
+  return {
+    title: 'Fetch data in server component',
+    description: 'Browse all products available in our shop.',
+  };
+}

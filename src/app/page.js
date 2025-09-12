@@ -13,6 +13,7 @@ export default function Home() {
           <Link href="/" >Home</Link> |
           <Link href="/about">About</Link> |
           <Link href="/login">Login</Link> |
+          <Link href="/userlist">Users</Link> |
           <Link href="/studentlist">Student List</Link> |
           <Link href="/productlist">Product List</Link> |
           <Link href="/allproducts">All Product</Link>
